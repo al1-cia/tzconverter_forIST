@@ -10,6 +10,7 @@ def index():
 @app.route('/convert', methods=['POST'])
 def convert():
     timezones = {
+        "AEST": [4,30],
         "BST": [-4, -30],
         "CST": [-10, -30],
         "PT": [-12, -30],
