@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/stylesheet.css">
+    <title>Time Converter</title>
+</head>
+<body>
+    <h1>Convert timezone from/to IST:</h1>
+    <form action="/convert" method="post">
+        <label for="timezone">Enter timezone to convert to:</label>
+        <select name="timezone" id="timezone">
+            <option value="BST">BST</option>
+            <option value="CET">CET</option>
+            <option value="CST">CST</option>
+            <option value="EST">EST</option>
+            <option value="GMT">GMT</option>
+            <option value="IST">IST</option>
+            <option value="JST">JST</option>
+            <option value="PT">PT</option>
+            <option value="UTC">UTC</option>
+        </select><br><br>
+        <label for="hours">Hours:</label>
+        <input type="number" name="hours" id="hours" min="0" max="12" required><br><br>
+        <label for="minutes">Minutes:</label>
+        <input type="number" name="minutes" id="minutes" min="0" max="59" required><br><br>
+        <label for="am_pm">am/pm:</label>
+        <select name="am_pm" id="am_pm">
+            <option value="am">AM</option>
+            <option value="pm">PM</option>
+        </select><br><br>
+        <label for="convert_from">Convert from (if converting to IST):</label>
+        <select name="convert_from" id="convert_from">
+            <option value="BST">BST</option>
+            <option value="CET">CET</option>
+            <option value="CST">CST</option>
+            <option value="EST">EST</option>
+            <option value="GMT">GMT</option>
+            <option value="IST">IST</option>
+            <option value="JST">JST</option>
+            <option value="PT">PT</option>
+            <option value="UTC">UTC</option>
+        </select><br><br>
+        <input type="submit" value="Convert">
+    </form>
+</body>
+</html>
