@@ -5,6 +5,7 @@ To use this converter:
 3. Use the command "python timecon.py" to start the flask app.
 4. Navigate to "http://127.0.0.1:5000/" on your browser.
 
-Output:
+Input:
 ![tz1](https://github.com/al1-cia/tzconverter_forIST/assets/140578698/49e6a915-8195-4f03-a942-db8197fa54d6)
-![tz2](https://github.com/al1-cia/tzconverter_forIST/assets/140578698/84593259-bc08-43bb-80b5-a132bee36f3d)
+Output:
+![tz2](https://github.com/al1-cia/tzconverter_forIST/assets/140578698/24e78c20-025e-418d-9e83-7820b9eca30b)
