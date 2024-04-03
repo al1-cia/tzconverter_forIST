@@ -6,6 +6,7 @@ To use this converter:
 4. Navigate to "http://127.0.0.1:5000/" on your browser.
 
 Input:
-![tz1](https://github.com/al1-cia/tzconverter_forIST/assets/140578698/49e6a915-8195-4f03-a942-db8197fa54d6)
+![gittt](https://github.com/al1-cia/tzconverter_forIST/assets/140578698/31ba80ef-a577-436c-a891-51783394d109)
+
 Output:
-![tz2](https://github.com/al1-cia/tzconverter_forIST/assets/140578698/24e78c20-025e-418d-9e83-7820b9eca30b)
+![omgitt](https://github.com/al1-cia/tzconverter_forIST/assets/140578698/d0495525-f021-4115-887a-a07997cf5367)
