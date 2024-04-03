@@ -17,6 +17,26 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.info {
+    position: relative; /* Ensure the parent element is positioned */
+}
+  
+.info::after {
+    content: 'Date falls within range of last Sunday of March to last Sunday of October.';
+    position: absolute;
+    top: 100%; /* Position it below the .info element */
+    left: 50%; /* Position it horizontally centered relative to its parent */
+    transform: translateX(-50%); /* Center it horizontally */
+    opacity: 0; /* Initially hidden */
+    padding: 10px;
+    border-radius: 5px;
+    font-size:15px;
+    transition: opacity 0.3s ease; /* Add transition for smoothness */
+  }
+  
+.info:hover::after {
+    opacity: 1; /* Show the additional text on hover */
+ }
 /* Heading styles */
 h1 {
     text-align: center;

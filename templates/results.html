@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>Time in {{ tz }}:</h1>
-    <p>{{ result_time }} ({{ diff }} {{ tzn }})</p>
+    <p>{{ result_time }} ({{ diff }})</p>
+    <br>
+    <p class="info"><strong>DST {{ dst }}. Time in DST: </strong> {{ dst_time }} ({{ diff }})</p>
 </body>
 </html>
