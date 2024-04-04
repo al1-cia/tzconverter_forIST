@@ -49,27 +49,38 @@ def convert():
     h = int(request.form['hours'])
     m = int(request.form['minutes'])
     ap = request.form['am_pm']
+    dst_ap=request.form['am_pm']
 
-    if tz == "IST":
+    if tz == "IST": #converting to ist
         tzn = request.form['convert_from']
         hrs = -timezones[tzn][0]
+        dst_hrs=-(timezones[tzn][0]+1)
         mns = -timezones[tzn][1]
+        dst_mns=-timezones[tzn][1]
         if(hrs<0):
             day=0
         else:
             day=1
-        if ap == "am":
-            ap = "pm"
+      
+        if(dst_hrs<0):
+            dst_day=0
         else:
-            ap = "am"
+            dst_day=1
+
     else:
         tzn="IST"
         hrs = timezones[tz][0]
+        dst_hrs=timezones[tz][0]+1
         mns = timezones[tz][1]
+        dst_mns=timezones[tz][1]
         if(hrs<0):
             day=0
         else:
             day=1
+        if(dst_hrs<0):
+            dst_day=0
+        else:
+            dst_day=1
 
     hours = h + hrs
     if hours < 0:
@@ -80,6 +91,10 @@ def convert():
             ap = "am"
     elif hours > 12:
         hours = np.abs(hours) - 12
+        if ap == "am":
+            ap = "pm"
+        else:
+            ap = "am"
 
     mins = m + mns
     if mins < 0:
@@ -91,16 +106,44 @@ def convert():
     if mins / 10 < 1:
         mins = str(mins)
         mins = "0" + mins
+    
+    dst_hours = h + dst_hrs
+    if dst_hours < 0:
+        dst_hours = 12 - np.abs(dst_hours)
+        if dst_ap == "am":
+            dst_ap = "pm"
+        else:
+            dst_ap = "am"
+    elif dst_hours > 12:
+        dst_hours = np.abs(dst_hours) - 12
+        if dst_ap == "am":
+            dst_ap = "pm"
+        else:
+            dst_ap = "am"
+
+    dst_mins = m + dst_mns
+    if dst_mins < 0:
+        dst_hours = dst_hours - 1
+        dst_mins = np.abs(dst_mins)
+    elif dst_mins == 60:
+        dst_hours=dst_hours+1
+        dst_mins=0
+    if dst_mins / 10 < 1:
+        dst_mins = str(dst_mins)
+        dst_mins = "0" + dst_mins
 
     result_time = f"{hours}:{mins} {ap}"
-    dst_time = f"{hours-1}:{mins} {ap}"
+    dst_time = f"{dst_hours}:{dst_mins} {dst_ap}"
 
     if(day==0):diff=dec_date.date()
     else:diff=cur_datetimeobj.date()
+
+    if(dst_day==0):dst_diff=dec_date.date()
+    else:dst_diff=cur_datetimeobj.date()
     
     if(DST==True):dst="may apply"
     else:dst="does not apply" 
 
-    return render_template('results.html', result_time=result_time,diff=diff, tz=tz,dst=dst,dst_time=dst_time)
+    return render_template('results.html', result_time=result_time,diff=diff,dst_diff=dst_diff, tz=tz,dst=dst,dst_time=dst_time)
 if __name__ == '__main__':
     app.run(debug=True)
