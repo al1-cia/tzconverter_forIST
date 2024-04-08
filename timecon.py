@@ -83,7 +83,7 @@ def convert():
             dst_day=1
 
     hours = h + hrs
-    if hours < 0:
+    if hours <= 0:
         hours = 12 - np.abs(hours)
         if ap == "am":
             ap = "pm"
@@ -108,7 +108,7 @@ def convert():
         mins = "0" + mins
     
     dst_hours = h + dst_hrs
-    if dst_hours < 0:
+    if dst_hours <= 0:
         dst_hours = 12 - np.abs(dst_hours)
         if dst_ap == "am":
             dst_ap = "pm"
