@@ -22,7 +22,7 @@ def convert():
         "BST": [-4, -30],
         "CST": [-10, -30],
         "PT": [-12, -30],
-        "EST": [-9, -30],
+        "EST": [-10, -30],
         "GMT": [-5, -30],
         "UTC": [-5, -30],
         "CET": [-4, -30],
@@ -100,9 +100,9 @@ def convert():
     if mins < 0:
         hours = hours - 1
         mins = np.abs(mins)
-    elif mins == 60:
+    elif mins >= 60:
         hours=hours+1
-        mins=0
+        mins=mins-60
     if mins / 10 < 1:
         mins = str(mins)
         mins = "0" + mins
@@ -125,9 +125,9 @@ def convert():
     if dst_mins < 0:
         dst_hours = dst_hours - 1
         dst_mins = np.abs(dst_mins)
-    elif dst_mins == 60:
+    elif dst_mins >= 60:
         dst_hours=dst_hours+1
-        dst_mins=0
+        dst_mins=dst_mins-60
     if dst_mins / 10 < 1:
         dst_mins = str(dst_mins)
         dst_mins = "0" + dst_mins
@@ -135,15 +135,15 @@ def convert():
     result_time = f"{hours}:{mins} {ap}"
     dst_time = f"{dst_hours}:{dst_mins} {dst_ap}"
 
-    if(day==0):diff=dec_date.date()
-    else:diff=cur_datetimeobj.date()
+    if(day==0):diff="Behind"
+    else:diff="Ahead of"
 
-    if(dst_day==0):dst_diff=dec_date.date()
-    else:dst_diff=cur_datetimeobj.date()
+    if(dst_day==0):dst_diff="Behind"
+    else:dst_diff="Ahead of"
     
     if(DST==True):dst="may apply"
     else:dst="does not apply" 
 
-    return render_template('results.html', result_time=result_time,diff=diff,dst_diff=dst_diff, tz=tz,dst=dst,dst_time=dst_time)
+    return render_template('results.html', result_time=result_time,diff=diff,dst_diff=dst_diff,tzn=tzn,tz=tz,dst=dst,dst_time=dst_time)
 if __name__ == '__main__':
     app.run(debug=True)
